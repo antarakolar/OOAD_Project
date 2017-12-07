@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import net.proteanit.sql.DbUtils;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -18,6 +21,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
 
 public class CustomerPage extends JFrame {
 	private String name; 
@@ -41,10 +46,12 @@ public class CustomerPage extends JFrame {
 	}
 	Connection connection =null;
 	private JTextField SellerName;
+	private JTable table;
 	/**
 	 * Create the frame.
 	 */
 	public CustomerPage() {
+		connection = sqliteConnection.dbConnector();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -69,9 +76,18 @@ public class CustomerPage extends JFrame {
 		
 		JButton btnNewButton = new JButton("Show Sellers");
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ListCategory list = new ListCategory();
-				list.setVisible(true);	
+			public void actionPerformed(ActionEvent e) {
+				
+					try {
+						String query = "select Name from SellerDetails";
+						PreparedStatement pst=connection.prepareStatement(query);
+						ResultSet rs=pst.executeQuery();
+						table.setModel(DbUtils.resultSetToTableModel(rs));
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+				
+				
 				
 			}
 		});
@@ -79,13 +95,31 @@ public class CustomerPage extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JLabel lblEnterSeller = new JLabel("Enter Seller");
-		lblEnterSeller.setBounds(12, 179, 98, 16);
+		lblEnterSeller.setBounds(12, 224, 98, 16);
 		contentPane.add(lblEnterSeller);
 		
 		SellerName = new JTextField();
-		SellerName.setBounds(195, 187, 116, 22);
+		SellerName.setBounds(104, 221, 116, 22);
 		contentPane.add(SellerName);
 		SellerName.setColumns(10);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(22, 126, 263, 82);
+		contentPane.add(scrollPane);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		
+		JButton btnConfirm = new JButton("Confirm");
+		btnConfirm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListCategory list = new ListCategory();
+				list.setVisible(true);	
+				
+			}
+		});
+		btnConfirm.setBounds(273, 220, 97, 25);
+		contentPane.add(btnConfirm);
 		//fetch();
 	}
 	/*public void fetch() {
