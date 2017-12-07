@@ -16,6 +16,8 @@ import java.sql.ResultSet;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class CustomerPage extends JFrame {
 	private String name; 
@@ -38,6 +40,7 @@ public class CustomerPage extends JFrame {
 		});
 	}
 	Connection connection =null;
+	private JTextField SellerName;
 	/**
 	 * Create the frame.
 	 */
@@ -64,23 +67,36 @@ public class CustomerPage extends JFrame {
 		lblSelectSeller.setBounds(12, 88, 98, 16);
 		contentPane.add(lblSelectSeller);
 		
-		JButton btnNewButton = new JButton("Shopper");
-		btnNewButton.setBounds(181, 113, 97, 25);
+		JButton btnNewButton = new JButton("Show Sellers");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ListCategory list = new ListCategory();
+				list.setVisible(true);	
+				
+			}
+		});
+		btnNewButton.setBounds(194, 88, 135, 25);
 		contentPane.add(btnNewButton);
-		fetch();
+		
+		JLabel lblEnterSeller = new JLabel("Enter Seller");
+		lblEnterSeller.setBounds(12, 179, 98, 16);
+		contentPane.add(lblEnterSeller);
+		
+		SellerName = new JTextField();
+		SellerName.setBounds(195, 187, 116, 22);
+		contentPane.add(SellerName);
+		SellerName.setColumns(10);
+		//fetch();
 	}
-	public void fetch() {
+	/*public void fetch() {
 		try {
 			String query = "select * from  SellerDetails";
 			PreparedStatement pst=connection.prepareStatement(query);
 			ResultSet rs=pst.executeQuery();
-			while(rs.next()) {
-				
-			}
-			//jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+			ShopperTable.setModel(DbUtils.resultSetToTableModel(rs));
 		}catch(Exception e) {
 			JOptionPane.showMessageDialog(null,e);
 		}
-	}
+	}*/
 
 }
