@@ -36,6 +36,7 @@ public class ListCategory extends JFrame {
 	private JLabel lblEnterCategory;
 	private JTextField txtCategory;
 	private JButton btnConfirm;
+	private JButton btnNewButton;
 	/**
 	 * Create the frame.
 	 */
@@ -48,7 +49,7 @@ public class ListCategory extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnLoadCategories = new JButton("Load categories");
+		JButton btnLoadCategories = new JButton("Search categories");
 		btnLoadCategories.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -125,6 +126,16 @@ public class ListCategory extends JFrame {
 		});
 		btnConfirm.setBounds(258, 157, 97, 25);
 		contentPane.add(btnConfirm);
+		
+		btnNewButton = new JButton("Search by Name");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ProductList product_name = new ProductList();
+				product_name.setVisible(true);	
+			}
+		});
+		btnNewButton.setBounds(258, 13, 141, 25);
+		contentPane.add(btnNewButton);
 		
 	}
 }
