@@ -1,4 +1,4 @@
-package quickshop;
+package Quickshop;
 import java.util.ArrayList;
 import java.util.HashSet;
 
