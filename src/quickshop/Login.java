@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
+import java.awt.Font;
 
 public class Login {
 
@@ -34,6 +35,8 @@ public class Login {
 		});
 	}
 	Connection connection =null;
+	private JButton btnCreateAccount;
+	private JLabel lblQuickshop;
 
 	/**
 	 * Create the application.
@@ -49,25 +52,25 @@ public class Login {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 561, 444);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("EmailID");
-		lblNewLabel.setBounds(62, 50, 56, 16);
+		lblNewLabel.setBounds(142, 122, 56, 16);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setBounds(62, 126, 79, 16);
+		lblPassword.setBounds(142, 196, 79, 16);
 		frame.getContentPane().add(lblPassword);
 		
 		textEmailID = new JTextField();
-		textEmailID.setBounds(228, 47, 116, 22);
+		textEmailID.setBounds(300, 119, 116, 22);
 		frame.getContentPane().add(textEmailID);
 		textEmailID.setColumns(10);
 		
 		txtpasswordField = new JPasswordField();
-		txtpasswordField.setBounds(228, 123, 112, 22);
+		txtpasswordField.setBounds(304, 193, 112, 22);
 		frame.getContentPane().add(txtpasswordField);
 		
 		JButton btnNewButton = new JButton("Login");
@@ -183,8 +186,24 @@ public class Login {
 				
 			}
 		});
-		btnNewButton.setBounds(91, 195, 97, 25);
+		btnNewButton.setBounds(105, 304, 97, 25);
 		frame.getContentPane().add(btnNewButton);
+		
+		btnCreateAccount = new JButton("Create account");
+		btnCreateAccount.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CreateAccount account = new CreateAccount();
+				account.setVisible(true);
+				
+			}
+		});
+		btnCreateAccount.setBounds(304, 304, 126, 25);
+		frame.getContentPane().add(btnCreateAccount);
+		
+		lblQuickshop = new JLabel("QuickShop");
+		lblQuickshop.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 22));
+		lblQuickshop.setBounds(191, 31, 249, 45);
+		frame.getContentPane().add(lblQuickshop);
 		
 
 	}
