@@ -28,6 +28,11 @@ public Payment getPaymentTotal(){
 public Address getAddress(){
 	return address;
 }
+public static placeOrder() {
+	return orderID;
+}
+
+public 
 
 private HashSet<String> ordersets = new HashSet<String>();
 private ArrayList<OrderObserver> observers = new ArrayList<OrderObserver>();
@@ -42,7 +47,7 @@ public void removeUser(OrderObserver observer){
 @Override
 public void notifyAllUsers(){
 	for(OrderObserver obs : observers){
-			System.out.println("Sending notification to observers");
+			System.out.println("New Order Placed");
 			obs.update(this.viewOrder());
 	}
 }
