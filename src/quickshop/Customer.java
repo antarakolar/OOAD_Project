@@ -1,5 +1,5 @@
 package Quickshop;
-
+// Adding customer details and methods. 
 public class Customer extends User {
 private int customerID;
 private Product AddProduct;
@@ -10,14 +10,8 @@ private Cart Cart;
 private Seller SearchStore;
 private Payment Payment;
 private Saved_Product SaveProduct;
-private String Review; 
-protected String getReview() {
-	return Review;
-}
+private String order;
 
-protected String setReview(String Review) {
-	return Review;
-}
 
 protected int getCustomerID() {
 	return customerID;
@@ -51,6 +45,7 @@ public Payment getPayment(){
 	return Payment;
 	
 }
+public void update(Order order);		// Observer design pattern : Observer
 
 
 
