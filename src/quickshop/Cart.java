@@ -55,6 +55,41 @@ public class Cart extends JFrame {
 	 * Create the frame.
 	 */
 	public Cart() {
+		private int cartID;
+		private int numberOfProducts;
+		private Product product; 
+		private Payment payment;
+		
+		protected int getCartID() {		
+			return cartID;
+		}
+
+		protected void setCartID(int cartID) {
+			this.cartID = cartID;
+		}
+		
+		protected int getNumberOfProducts() {		
+			return numberOfProducts;
+		}
+
+		protected void setNumberOfProducts(int numberOfProducts) {
+			this.numberOfProducts = numberOfProducts;
+		}
+		
+		public Product viewProducts() {
+			
+		}
+		public Payment addPaymentDetails() {
+			return payment;
+		}
+		public Product getAddProduct() {
+			return product; 
+		}
+		public Product removeProduct() {
+			return product;
+		}
+		
+		
 		connection = sqliteConnection.dbConnector();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 684, 453);
