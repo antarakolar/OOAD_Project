@@ -66,12 +66,12 @@ public class AdminView extends JFrame {
 		lblAdmin.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblAdmin.setBounds(262, 13, 105, 33);
 		contentPane.add(lblAdmin);
-		
+/*******This button is created to display the customer users******************/		
 		JButton btnDisplayUsers = new JButton("Display Customer Users");
 		btnDisplayUsers.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					String query = "select * from CustomerDetails";
+					String query = "select * from CustomerDetails"; /**********Entire customer details is fetched from the SQL databse and displayed *************/
 					PreparedStatement pst=connection.prepareStatement(query);
 					ResultSet rs=pst.executeQuery();
 					table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -128,7 +128,7 @@ public class AdminView extends JFrame {
 		textName.setBounds(71, 160, 90, 22);
 		contentPane.add(textName);
 		textName.setColumns(10);
-		
+/*********When Save is clicked all the customer details gets stored in the SQL data base Customer details*******/		
 		JButton btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
@@ -153,7 +153,7 @@ public class AdminView extends JFrame {
 		});
 		btnSave.setBounds(46, 270, 97, 25);
 		contentPane.add(btnSave);
-		
+/*********Delete user option where the Admin is allowed to delete a user from the database **********/		
 		JButton btnDeleteUser = new JButton("Delete User");
 		btnDeleteUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -173,7 +173,7 @@ public class AdminView extends JFrame {
 		});
 		btnDeleteUser.setBounds(46, 328, 105, 25);
 		contentPane.add(btnDeleteUser);
-		
+/*****Admin is able to view orders as per the observer design pattern**********/		
 		JButton btnViewOrders = new JButton("View Orders");
 		btnViewOrders.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -187,7 +187,7 @@ public class AdminView extends JFrame {
 		JLabel lblAddAccount = new JLabel("Add and Delete Account ");
 		lblAddAccount.setBounds(12, 76, 149, 16);
 		contentPane.add(lblAddAccount);
-		
+/*******Admin is able to display all sellers **************/		
 		JButton btnDisplaySellerUsers = new JButton("Display Seller Users");
 		btnDisplaySellerUsers.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
