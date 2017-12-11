@@ -5,6 +5,8 @@ public class Product {
 	private String productName;
 	private String productCategory;
 	private int productCost; 
+	private String productDescription;
+	private Seller seller; 
 	
 	
 	public int getProductId() {
@@ -39,6 +41,17 @@ public class Product {
 		this.productCost = productCost;
 	}
 	
+	public String getProductDescription() {
+		return productDescription;
+	}
+
+	public void setProductDescription(int productDescription) {
+		this.productDescription = productDescription;
+	}
+	
+	public Seller getSellerId() {
+		return seller; 
+	}
 	
 
 }
