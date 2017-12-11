@@ -23,6 +23,7 @@ public class Cart extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+/***** Calculate the sum of a column from SQL table. This is mainly used to find the total cost of the items added to the cart ******/
 	public int sum() {
 		int rows= table.getRowCount();
 		int sum=0;
@@ -89,7 +90,7 @@ public class Cart extends JFrame {
 			return product;
 		}
 		
-		
+/*** Connection to the SQL database established ************/		
 		connection = sqliteConnection.dbConnector();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 684, 453);
@@ -97,15 +98,15 @@ public class Cart extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+/***** Displaying the cart details when the show cart button is clicked ****************/		
 		JButton btnShowCart = new JButton("Show cart");
 		btnShowCart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					String query = "select * from ShoppingCart";
+					String query = "select * from ShoppingCart"; /** Selects the entire Shoppingcart table from SQL database *****/
 					PreparedStatement pst=connection.prepareStatement(query);
 					ResultSet rs=pst.executeQuery();
-					table.setModel(DbUtils.resultSetToTableModel(rs));
+					table.setModel(DbUtils.resultSetToTableModel(rs));/*****Display the table fetched************/
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -120,7 +121,7 @@ public class Cart extends JFrame {
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
-		
+/********display the total when make payment is clicked and display a new frame for entering new frame details**********/		
 		btnMakePayment = new JButton("Make Payment");
 		btnMakePayment.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -159,7 +160,7 @@ public class Cart extends JFrame {
 		textprod.setBounds(514, 77, 116, 22);
 		contentPane.add(textprod);
 		textprod.setColumns(10);
-		
+		/********** Removing items from cart when the remove button is clicked and the product is deleted from the SQL database**************/
 		btnRemove = new JButton("Remove");
 		btnRemove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
